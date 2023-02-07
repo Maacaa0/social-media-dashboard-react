@@ -2,35 +2,31 @@ import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import SocialSites from './components/SocialSites'
 import Overview from './components/Overview'
-// import { themeProvider } from 'styled-components'
 
 function App() {
 
-  const {theme, setTheme} = useState("light");
+  const [theme, setTheme] = useState("light");
 
   const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
+    theme === "light" ? setTheme("dark") : setTheme("light")
   }
 
-  const lightTheme = {
-    body: "#ffffff",
-    navbar: "#f5f7ff",
-    card: "#f0f2fa",
-    mainText: "#63687e",
-    otherText: "#1e202a"
-  }
-
-  const darkTheme = {
-    body: "#1e202a",
-    navbar: "#1f212e",
-    card: "#252a41",
-    mainText: "#8b97c6",
-    otherText: "#ffffff"
+  const themeStyles = {
+    mainBg: {backgroundColor: theme === "light" ? "#ffffff" : "#1e202a"},
+    navbarBg: {background: theme === "light" ? "#f5f7ff" : "#1f212e"},
+    cardBg: {background: theme === "light" ? "#f0f2fa" : "#252a41"},
+    headingColor: {color: theme === "light" ? "#1e202a" : "#ffffff"},
+    otherTextColor: {color: theme === "light" ? "#63687e" : "#8b97c6"}
   }
 
   return (
-    <div className="App">
-      <Navbar />
+     
+    <div style={themeStyles.mainBg} className="App">
+
+      <Navbar theme={theme}
+              styles={themeStyles}
+              toggler={themeToggler} />
+
       <div className='social-sites-container'>
         <SocialSites 
           border="var(--Facebook) 4px solid"
@@ -40,7 +36,9 @@ function App() {
           type="FOLLOWERS"
           today="/images/icon-up.svg"
           todayCount="12"
-          color="var(--LimeGreen)" />
+          color="var(--LimeGreen)"
+          theme={theme}
+          styles={themeStyles} />
 
         <SocialSites 
           border="var(--Twitter) 4px solid"
@@ -51,7 +49,8 @@ function App() {
           today="/images/icon-up.svg"
           todayCount="99"
           color="var(--LimeGreen)"
-          />
+          theme={theme}
+          styles={themeStyles} />
 
         <SocialSites 
           border="var(--Instagram) 4px solid"
@@ -61,7 +60,9 @@ function App() {
           type="FOLLOWERS"
           today="/images/icon-up.svg"
           todayCount="1099"
-          color="var(--LimeGreen)" />  
+          color="var(--LimeGreen)"
+          theme={theme}
+          styles={themeStyles} />  
 
         <SocialSites 
           border="var(--YouTube) 4px solid"
@@ -71,10 +72,12 @@ function App() {
           type="SUBSCRIBERS"
           today="/images/icon-down.svg"
           todayCount="144"
-          color="var(--BrightRed)" /> 
+          color="var(--BrightRed)"
+          theme={theme}
+          styles={themeStyles} /> 
 
       </div>
-      <h2>Overview - Today</h2>
+      <h2 style={themeStyles.headingColor}>Overview - Today</h2>
       <div className="overview-container">
         <Overview 
           text="Page Views"
@@ -83,7 +86,8 @@ function App() {
           arrow="/images/icon-up.svg"
           percentage="3"
           color="var(--LimeGreen)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Likes"
@@ -92,7 +96,8 @@ function App() {
           arrow="/images/icon-down.svg"
           percentage="2"
           color="var(--BrightRed)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Likes"
@@ -101,7 +106,8 @@ function App() {
           arrow="/images/icon-up.svg"
           percentage="2257"
           color="var(--LimeGreen)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Profile Views"
@@ -110,7 +116,8 @@ function App() {
           arrow="/images/icon-up.svg"
           percentage="1375"
           color="var(--LimeGreen)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Retweets"
@@ -119,7 +126,8 @@ function App() {
           arrow="/images/icon-up.svg"
           percentage="303"
           color="var(--LimeGreen)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Likes"
@@ -128,7 +136,8 @@ function App() {
           arrow="/images/icon-up.svg"
           percentage="553"
           color="var(--LimeGreen)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Likes"
@@ -137,7 +146,8 @@ function App() {
           arrow="/images/icon-down.svg"
           percentage="19"
           color="var(--BrightRed)"
-        />
+          theme={theme}
+          styles={themeStyles} />
 
         <Overview 
           text="Total Views"
@@ -146,7 +156,8 @@ function App() {
           arrow="/images/icon-down.svg"
           percentage="12"
           color="var(--BrightRed)"
-        />  
+          theme={theme}
+          styles={themeStyles} />  
       </div>
     </div>
   )

@@ -20,57 +20,39 @@
    --Twitter: hsl(203, 89%, 53%);
    --Instagram: rgb(223, 73, 150);
    --YouTube: hsl(348, 97%, 39%);
-   
-   /* #### Dark Theme */
-   
-   --ToggleDark: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
-   
-   /* #### Light Theme */
-   
-   --ToggleLight: hsl(230, 22%, 74%);
-   
-   /* ### Neutral */
-   
-   /* #### Dark Theme */
-   
+      
    --VeryDarkBlue: #1e202a;
-   /* (BG) */
    --VeryDarkBlue1: #1f212e;
-   /* (TopBGPattern) */
    --DarkDesaturatedBlue: #252a41;
-   /* (Card BG) */
    --DesaturatedBlue: #8b97c6;
-   /* (Text) */
+
+  
    --White: #ffffff;
-   /* (Text) */
-   
-   /* #### Light Theme */
-   
-   --White: #ffffff;
-   /* (BG) */
    --VeryPaleBlue: #f5f7ff;
-   /* (Top BG Pattern) */
    --LightGrayishBlue: #f0f2fa;
-   /* (Card BG) */
    --DarkGrayishBlue: #63687e;
-   /* (Text) */
    --VeryDarkBlue: #1e202a;
-   /* (Text) */
 }
 
 * {
   box-sizing: border-box;
+  transition: background 150ms ease;
+  transition: color 150ms ease;
 }
 
 #root {
   width: 100vw;
 }
 
+.App {
+  height: 100%;
+}
+
 body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-
+  margin: 0;
   background: var(--VeryDarkBlue);
 }
 
@@ -84,7 +66,7 @@ h2 {
   margin: 3.5rem 0 0 0;
   font-size: 1.7rem;
   letter-spacing: 0.3px;
-  padding: 0rem 11.3rem;
+  padding: 0rem calc(45.5% - 35rem);
 }
 
 small {
@@ -100,6 +82,7 @@ small {
 
 .dark-mode-text {
   font-weight: 700;
+  opacity: .8;
   margin: 0;
   color: var(--DesaturatedBlue);
 }
@@ -110,7 +93,7 @@ small {
   align-items: baseline;
   height: 20rem;
   background: var(--VeryDarkBlue1);
-  padding: 4.85rem 11.1rem;
+  padding: 4.85rem calc(45.5% - 35rem);
 }
 
 .social-sites-container {
@@ -130,13 +113,13 @@ small {
   min-width: 18.3rem;
   height: 15.3rem;
 
-  background: var(--DarkDesaturatedBlue);
   border-radius: .3rem;
   transition: 150ms ease;
 }
 
 .card:hover {
-  background: #333a56;
+  filter: brightness(90%);
+  transform: scale(1.1);
   cursor: pointer;
 }
 
@@ -191,6 +174,7 @@ small {
   column-gap: 2.1rem;
   justify-content: center;
   margin-top: 1.7rem;
+  padding-bottom: 4rem;
 }
 
 .overview {
@@ -202,7 +186,8 @@ small {
 }
 
 .overview:hover {
-  background: #333a56;
+  filter: brightness(90%);
+  transform: scale(1.1);
   cursor: pointer;
 }
 
@@ -241,13 +226,9 @@ small {
   font-size: .85rem;
 }
 
-
-
-
-
-
-
-
+/* ************** */
+/* THEME SWITCHER */
+/* ************** */
 
 /* The switch - the box around the slider */
 .switch {
@@ -290,10 +271,6 @@ small {
     transition: .4s;
 }
 
-/* input:checked + .slider {
-  /* background: linear-gradient(0deg,hsl(210, 78%, 56%), hsl(146, 68%, 55%)); } */
-
-
 input:checked + .slider:before {
   -webkit-transform: translateX(23px);
   -ms-transform: translateX(23px);
@@ -309,10 +286,14 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+/* ******************************************* */
+
+
+
 
 @media (max-width: 1200px) {
   .navbar {
-    padding: 0 2rem;
+    padding: 2rem 2rem;
     flex-direction: column;
     justify-content: flex-start;
   }
@@ -327,6 +308,7 @@ input:checked + .slider:before {
 
   .social-sites-container {
     grid-template-columns: repeat( auto-fit, minmax(18.25rem, 18.25rem) );
+    margin-top: -3.8rem;
   }
 
   .overview-container {
@@ -335,5 +317,6 @@ input:checked + .slider:before {
 
   h2 {
     padding: 0 2rem;
+    text-align: center;
   }
 }
